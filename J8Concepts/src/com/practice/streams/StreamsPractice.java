@@ -46,8 +46,16 @@ public class StreamsPractice {
 		System.out.println("Average of all numbers : " + stats.getAverage());
 		
 		
+		List<String> names = Arrays.asList("Abhijit","Arjun","Rahat","Sonu","Lata","Shreya","Udit");
 		
+		List<String> namesNotStartingWithA = names.stream().filter(string -> !string.isEmpty() && !string.toLowerCase().startsWith("a"))
+				.collect(Collectors.toList());
+		//joining
+		String namesWithA = names.parallelStream().filter(string -> !string.isEmpty() && string.toLowerCase().startsWith("a"))
+				.collect(Collectors.joining(","));
 		
+		namesNotStartingWithA.forEach(System.out::println);
+		System.out.println("namesWithA: "+namesWithA);
 		
 	}
 	
